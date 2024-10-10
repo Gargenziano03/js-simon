@@ -25,11 +25,12 @@ Se l’utente ha inserito qualcosa di non valido, segnaliamolo visivamente nel f
 --if/else 
 --array2(dove stampare i numeri indovinati)
 */
-
+//richiamo id
+const numeriCompurtEl = document.getElementById('numeriComputer')
+const timerEl = document.getElementById('timer')
 //1
 //creare un array dove vengo stampati dal pc 5 numeri casuali  
 //Visualizzare in pagina 5 numeri casuali.
-const numeriCompurtEl = document.getElementById('numeriComputer')
 function randomNumbergenerator() {
     //array dove pushare i numeri generati
     const numeri = [];
@@ -42,16 +43,27 @@ function randomNumbergenerator() {
     }
     return numeri
 }
-//output
-const numeriCasuali = randomNumbergenerator();
-numeriCompurtEl.innerHTML = numeriCasuali.join(', ')
-
-
-
-
 //2
 //Da lì parte un timer di 30 secondi.
 //setInterval
+//output
+function avvioTimer() {
+    let second = 30;
+    const clock = setInterval(() => {
+        second--;
+        timerEl.innerHTML = `tempo rimasto: ${second}`;
+        if (second <= 0) {
+            clearInterval(clock);
+            timerEl.innerHTML = 'tempo scaduto;';
+            numeriCompurtEl.innerText = ''; 
+        }
+    }, 1000);
+    
+}
+const numeriCasuali = randomNumbergenerator();
+numeriCompurtEl.innerHTML = numeriCasuali.join(', ')
+avvioTimer()
+
 
 //3
 //Dopo 30 secondi i numeri scompaiono e appaiono invece 5 input in cui l'utente deve inserire i numeri che ha visto precedentemente
