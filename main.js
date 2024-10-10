@@ -31,10 +31,14 @@ Se l’utente ha inserito qualcosa di non valido, segnaliamolo visivamente nel f
 
 //2
 //Da lì parte un timer di 30 secondi.
+//setInterval
 
 //3
 //Dopo 30 secondi i numeri scompaiono e appaiono invece 5 input in cui l'utente deve inserire i numeri che ha visto precedentemente
+//document.getElementById (per richiamare gli id del html dove l'utente inserira i numeri)
 
 //4
 //il software dice quanti e quali dei numeri da indovinare sono stati individuati.
-
+//for
+//if/else 
+//array2
