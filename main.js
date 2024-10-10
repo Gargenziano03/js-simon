@@ -28,16 +28,18 @@ Se l’utente ha inserito qualcosa di non valido, segnaliamolo visivamente nel f
 //richiamo id
 const numeriCompurtEl = document.getElementById('numeriComputer')
 const timerEl = document.getElementById('timer')
+const numeriUtenteEl = document.getElementById('numeriUtente')
+
 //1
 //creare un array dove vengo stampati dal pc 5 numeri casuali  
 //Visualizzare in pagina 5 numeri casuali.
-function randomNumbergenerator() {
+function generarenumericasuali() {
     //array dove pushare i numeri generati
     const numeri = [];
     //generare fino a 5 numeri
     for (let i = 0; i < 5; i++) {
         // generare il numero
-        const numeroGenerato = Math.floor((Math.random()*100) +1);
+        const numeroGenerato = Math.floor((Math.random() * 100) + 1);
         //inserire il numero generato nel array
         numeri.push(numeroGenerato)
     }
@@ -62,23 +64,50 @@ function avvioTimer() {
             //stampa tempo scaduto
             timerEl.innerHTML = 'tempo scaduto;';
             //nascondi i numeri casuali del computer
-            numeriCompurtEl.innerText = ''; 
+            numeriCompurtEl.innerText = '';
+            inputnumeriUtente()
+            
+
         }
     }, 1000);
-    
 }
-//output / invoca function
-const numeriCasuali = randomNumbergenerator();
-numeriCompurtEl.innerHTML = numeriCasuali.join(', ')
-avvioTimer()
 
 
 //3
 //Dopo 30 secondi i numeri scompaiono e appaiono invece 5 input in cui l'utente deve inserire i numeri che ha visto precedentemente
-//document.getElementById (per richiamare gli id del html dove l'utente inserira i numeri)
+//for
+//arrey2
+//array dove stampare i numeri inseriti
+function inputnumeriUtente() {
+    //array dove pusciare i numeri inseriti
+    const numeriInseriti = [];
+    //inserire fino a 5 numeri
+    for (let i = 0; i < 5; i++) {
+        //variabile da appogio
+        const element = document.createElement('element');
+        //dichiarare che è di tipo numero
+        element.type = 'number';
+        //inserisce un numero in posizioni divrse
+        element.placeholder = (i + 1)
+        //aggiunge i numeri al arrey
+        numeriInseriti.push(element);
+        //agginge element a numeriUtenteEl per farlp visualizzare in pagina
+        numeriUtenteEl.appendChild(element)
+    }
+}
+numeriUtenteEl.style.display = 'block';
+//output / invoca function
+const numeriCasuali = generarenumericasuali();
+numeriCompurtEl.innerHTML = numeriCasuali.join(', ')
+avvioTimer()
+
+//
+
+
+
 
 //4
 //al click del bottone il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 //for
 //if/else
-//array2
+
