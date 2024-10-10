@@ -46,20 +46,28 @@ function randomNumbergenerator() {
 //2
 //Da lì parte un timer di 30 secondi.
 //setInterval
-//output
+
 function avvioTimer() {
+    // 30 secondi
     let second = 30;
     const clock = setInterval(() => {
+        //decremento dei secondi
         second--;
+        //stampa tempo rimasto con i secondi affiancati
         timerEl.innerHTML = `tempo rimasto: ${second}`;
+        //condizione se i secondi sono <=0 
         if (second <= 0) {
+            //ferma il tempo 
             clearInterval(clock);
+            //stampa tempo scaduto
             timerEl.innerHTML = 'tempo scaduto;';
+            //nascondi i numeri casuali del computer
             numeriCompurtEl.innerText = ''; 
         }
     }, 1000);
     
 }
+//output / invoca function
 const numeriCasuali = randomNumbergenerator();
 numeriCompurtEl.innerHTML = numeriCasuali.join(', ')
 avvioTimer()
