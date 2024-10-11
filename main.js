@@ -28,7 +28,8 @@ Se l’utente ha inserito qualcosa di non valido, segnaliamolo visivamente nel f
 //richiamo id
 const numeriCompurtEl = document.getElementById('numeriComputer')
 const timerEl = document.getElementById('timer')
-const numeriUtenteEl = document.getElementById('numeriUtente')
+const numeriUtenteEl = document.querySelector('numeriU')
+const buttonEl = document.getElementById('button') 
 
 //1
 //creare un array dove vengo stampati dal pc 5 numeri casuali  
@@ -65,41 +66,42 @@ function avvioTimer() {
             timerEl.innerHTML = 'tempo scaduto;';
             //nascondi i numeri casuali del computer
             numeriCompurtEl.innerText = '';
-            inputnumeriUtente()
+        
             
 
         }
     }, 1000);
-}
-
-
+}const numeriCasuali = generarenumericasuali();
+numeriCompurtEl.innerHTML = numeriCasuali.join(', ')
+avvioTimer()
 //3
 //Dopo 30 secondi i numeri scompaiono e appaiono invece 5 input in cui l'utente deve inserire i numeri che ha visto precedentemente
 //for
 //arrey2
 //array dove stampare i numeri inseriti
-function inputnumeriUtente() {
-    //array dove pusciare i numeri inseriti
-    const numeriInseriti = [];
-    //inserire fino a 5 numeri
-    for (let i = 0; i < 5; i++) {
-        //variabile da appogio
-        const element = document.createElement('element');
-        //dichiarare che è di tipo numero
-        element.type = 'number';
-        //inserisce un numero in posizioni divrse
-        element.placeholder = (i + 1)
-        //aggiunge i numeri al arrey
-        numeriInseriti.push(element);
-        //agginge element a numeriUtenteEl per farlp visualizzare in pagina
-        numeriUtenteEl.appendChild(element)
-    }
+function  timerInputNumeriUtente(){
+    // 30 secondi
+    let second = 30;
+    const clock = setInterval(() => {
+        //decremento dei secondi
+        second--;
+        //condizione se i secondi sono <=0 
+        if (second <= 0) {
+            //ferma il tempo 
+            clearInterval(clock);
+            //stampa tempo scaduto
+            numeriUtenteEl.Style.display('block')
+            timerInputNumeriUtente()
+        }
+    }, 1000);
 }
-numeriUtenteEl.style.display = 'block';
+const numeriu =  timerInputNumeriUtente();
+timerInputNumeriUtente()
+
+
+
 //output / invoca function
-const numeriCasuali = generarenumericasuali();
-numeriCompurtEl.innerHTML = numeriCasuali.join(', ')
-avvioTimer()
+
 
 //
 
