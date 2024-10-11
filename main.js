@@ -48,6 +48,8 @@ function generarenumericasuali() {
 }
 //2
 //Da lì parte un timer di 30 secondi.
+//Dopo 30 secondi i numeri scompaiono e appaiono invece 5 input 
+//in cui l'utente deve inserire i numeri che ha visto precedentemente
 //setInterval
 
 function avvioTimer() {
@@ -66,48 +68,15 @@ function avvioTimer() {
             timerEl.innerHTML = 'tempo scaduto;';
             //nascondi i numeri casuali del computer
             numeriCompurtEl.innerText = '';
-        
-            
-
-        }
-    }, 1000);
-}const numeriCasuali = generarenumericasuali();
-numeriCompurtEl.innerHTML = numeriCasuali.join(', ')
-avvioTimer()
-//3
-//Dopo 30 secondi i numeri scompaiono e appaiono invece 5 input in cui l'utente deve inserire i numeri che ha visto precedentemente
-//for
-//arrey2
-//array dove stampare i numeri inseriti
-function  timerInputNumeriUtente(){
-    // 30 secondi
-    let second = 30;
-    const clock = setInterval(() => {
-        //decremento dei secondi
-        second--;
-        //condizione se i secondi sono <=0 
-        if (second <= 0) {
-            //ferma il tempo 
-            clearInterval(clock);
-            //stampa tempo scaduto
-            numeriUtenteEl.Style.display('block')
-            timerInputNumeriUtente()
+            numeriUtenteEl.classList.remove('d-none');
         }
     }, 1000);
 }
-const numeriu =  timerInputNumeriUtente();
-timerInputNumeriUtente()
-
-
-
 //output / invoca function
-
-
-//
-
-
-
-
+const numeriCasuali = generarenumericasuali();
+numeriCompurtEl.innerHTML = numeriCasuali.join(', ')
+avvioTimer()
+S
 //4
 //al click del bottone il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 //for
